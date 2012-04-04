@@ -1,0 +1,46 @@
+################################################################################
+################################################################################
+Is a module written in Python that this one get from a web page the html code
+and find inside all sources of the images that contains.
+################################################################################
+################################################################################
+Syntax:
+  pyGIFWM option [params] [extensions]
+
+option:
+	0 -> Only get the images from 1 website.
+		syntax: 	pyGIFWM 0 url [extensions]
+		generate:	img_url_ext[1..n].sh
+	1 -> Get images from a url template website.
+		syntax:		pyGIFWM 1 urlT iniNum finNum [extensions]
+		generate:	img_urlT[iniNum..finNum]_ext[1..n].sh
+	2 -> Get images from the websites that are written in a file.
+		syntax:		pyGIFWM 2 file.txt [extensions]
+		generate:	img_url[1..n].sh
+	3 -> To get the list of known extensions.
+		syntax:		pyGIFWM 3
+		generate:	STDOUT 'ext1' ..  'extN'
+	4 -> To get the images that are allocated in the website's links.
+		syntax:		pyGIFWM 4 url [extensions]
+		generate:	img_url_ext[1..n].sh
+params:
+	The params must be one url, a template of one url with an initialNumber
+	and with a finalNumber to add to the url template, and in last option
+	of param it could be a file (filename) in which one there is a list
+	of urls websites.
+
+extensions:
+	Is the list of extensions that the module get from the
+	website(s), if is not given any extension, by default
+	the module get all the images that he know. Each extension of
+	this list must not have an initial dot, example:
+		Incorrect: '.png'
+		Correct:    'png'
+################################################################################
+Examples:
+	pyGIFWM	0 http://www.fsf.org/ png jpg
+	   "	1 http://www.fsf.org/ 1 150 png jpg
+	   "	2 textfile.txt png jpg
+	   "	3
+	   "	4 http://www.fsf.org/ gif
+################################################################################
