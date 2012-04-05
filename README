@@ -20,9 +20,9 @@ option:
 	3 -> To get the list of known extensions.
 		syntax:		pyGIFWM 3
 		generate:	STDOUT 'ext1' ..  'extN'
-	4 -> To get the images that are allocated in the website's links.
-		syntax:		pyGIFWM 4 url [extensions]
-		generate:	img_url_ext[1..n].sh
+	4 -> To view the license of this  app
+		syntax:		pyGIFWM 4
+		generate:	STDOUT Module's License
 params:
 	The params must be one url, a template of one url with an initialNumber
 	and with a finalNumber to add to the url template, and in last option
