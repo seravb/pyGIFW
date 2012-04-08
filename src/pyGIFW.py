@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# File: pyGIFW.py -> pyGetImagesFromWebsitesModule
+# File: pyGIFW.py -> pyGetImagesFromWebsites
 
 # Copyright (c) 2011 Serafín Vélez Barrera
 
@@ -22,8 +22,8 @@
 ################################################################################
 ################################################################################
 DESCRIPTION:
-	Is a module written in Python that this one get from a web page the html code
-	and find inside all sources of the images that contains.
+	Is a module written in Python that this one get from a web page the html
+	code and find inside all sources of the images that contains.
 ################################################################################
 ################################################################################
 NOTE:
@@ -86,20 +86,20 @@ def license():
 	"""
 	os.system("clear") # Instruction that call the OS to clear the terminal
 	print "\
-	File: pyGIFWM.py -> pyGetImagesFromWebsitesModule \n \
-	Copyright (c) 2011 Serafín Vélez Barrera \n \
-	 \n \
-	This program is free software: you can redistribute it and/or modify \n \
-	it under the terms of the GNU General Public License as published by \n \
-	the Free Software Foundation, either version 3 of the License, or \n \
-	(at your option) any later version. \n \
-	 \n \
-	This program is distributed in the hope that it will be useful, \n \
-	but WITHOUT ANY WARRANTY; without even the implied warranty of \n \
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the \n \
-	GNU General Public License for more details. \n \
-	 \n \
-	You should have received a copy of the GNU General Public License \n \
+	File: pyGIFWM.py -> pyGetImagesFromWebsitesModule \n\
+	Copyright (c) 2011 Serafín Vélez Barrera \n\
+	\n\
+	This program is free software: you can redistribute it and/or modify \n\
+	it under the terms of the GNU General Public License as published by \n\
+	the Free Software Foundation, either version 3 of the License, or \n\
+	(at your option) any later version. \n\
+	\n\
+	This program is distributed in the hope that it will be useful, \n\
+	but WITHOUT ANY WARRANTY; without even the implied warranty of \n\
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the \n\
+	GNU General Public License for more details. \n\
+	\n\
+	You should have received a copy of the GNU General Public License \n\
 	along with this program.  If not, see <http://www.gnu.org/licenses/>."
 ################################################################################
 def getExtensions():
@@ -159,7 +159,8 @@ def getImgFromUrl(urlSource, extension):
 def writeFileWithLinks(filename, urlSource, links):
 	"""
 	name: 		writeFileWithLinks()
-	brief: 		Write a file with name equal to 'filename' with the img links.
+	brief: 		Write a file with name equal to 'filename' with the img
+				links.
 
 	param 	filename:
 			File with name 'filename' to write.
@@ -172,7 +173,8 @@ def writeFileWithLinks(filename, urlSource, links):
 	"""
 	f = file(filename, "wb+")
 	try:
-		line = "#!/bin/sh \nmkdir img_" + urlSource + "\ncd img_" + urlSource + "\n"
+		line = "#!/bin/sh \nmkdir img_" + urlSource + "\ncd img_" + \
+			urlSource + "\n"
 		f.write(line)
 		for i in links:
 			line = "wget " + i + "\n"
@@ -186,7 +188,8 @@ def getUrlFromFile(filename):
 	brief: 		Read a file and gets all the links.
 
 	param 	filename:
-			Is the name of a file that which one contain a list of urls.
+			Is the name of a file that which one contain a list of
+				urls.
 
 	return:		Nothing
 	"""
@@ -210,7 +213,8 @@ def createFileWithLinks(links, url, extension):
 	brief: 		If there is links to save create the file to save them.
 
 	param 	links:
-			Is the name of a file that which one contain a list of urls.
+			Is the name of a file that which one contain a list of
+				urls.
 	param	url:
 			Url of the website.
 	param	extension:
@@ -232,12 +236,12 @@ if __name__ == "__main__":
 			url = sys.argv[2]
 			if nparam>3:	# The module must read given extensions
 				for i in range(3, nparam):
-					print "Getting ", sys.argv[i], " images"
+					print "Images in ", sys.argv[i]
 					links = getImgFromUrl(url, sys.argv[i])
 					createFileWithLinks(links, url, sys.argv[i])
 			else:		# The module must use all extensions
 				for i in range(1, len(extensions)):
-					print "Getting ", extensions[i], " images"
+					print "Images in ", extensions[i]
 					links = getImgFromUrl(url, extensions[i])
 					createFileWithLinks(links, url, extensions[i])
 		elif option==1: # Get images from a url template website
@@ -248,31 +252,32 @@ if __name__ == "__main__":
 				url = urlTemplate + str(initialNumber) + '/'
 				if nparam>5:	# The module must read given extensions
 					for i in range(3, nparam):
-						print "Getting ", sys.argv[i], " images"
+						print "Images in ", sys.argv[i]
 						links = getImgFromUrl(url, sys.argv[i])
 						createFileWithLinks(links, url, sys.argv[i])
 				else:		# The module must use all extensions
 					for i in range(1, len(extensions)):
-						print "Getting ", extensions[i], " images"
+						print "Images in ", extensions[i]
 						links = getImgFromUrl(url, extensions[i])
 						createFileWithLinks(links, url, extensions[i])
 		elif option==2: # Get images from the websites inside of a file
 			urls = getUrlFromFile(sys.argv[2])
 			if len(urls)>0:
 				for url in urls:
-					# If the last character is a \n, this is removed to create a good url for the download
+					# If the last character is a \n, this is
+					# removed to create a good url for the
+					# download
 					if url[len(url)-1]=='\n':
 						url=str.strip(url, '\n')
-
 					if nparam>3:	# The module must read given extensions
 						for i in range(3, nparam):
-							print "Getting ", sys.argv[i], " images"
-							links = getImgFromUrl(url, sys.argv[i])
+							print "Images in ", sys.argv[i]
+							links=getImgFromUrl(url, sys.argv[i])
 							createFileWithLinks(links, url, sys.argv[i])
 					else:		# The module must use all extensions
 						for i in range(1, len(extensions)):
-							print "Getting ", extensions[i], " images"
-							links = getImgFromUrl(url, extensions[i])
+							print "Images in ", extensions[i]
+							links=getImgFromUrl(url, extensions[i])
 							createFileWithLinks(links, url, extensions[i])
 		else:
 			print "Error in the given option"
